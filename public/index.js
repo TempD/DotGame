@@ -43,8 +43,6 @@
       getState: _ => state,
       dispatch: (action) => {
         state = reducer(state, action);
-
-        console.log(state);
         
         listeners.forEach((listener) => listener());
       },
@@ -75,6 +73,9 @@
   //  Dot related functions  //
   /////////////////////////////
 
+  const dotColors = ['rgba(0, 0, 255, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 165, 0, 1)', 'rgba(255, 255, 0, 1)'];
+  const dotGradient = ['rgba(128, 128, 255, 1)', 'rgba(255, 128, 128, 1)', 'rgba(255, 210, 128, 1)', 'rgba(255, 255, 128, 1)'];
+
   const handleDotClick = (e) => {
     const dotEl = e.target;
     scoreStore.dispatch({...actions.scoreUpdate, value: parseInt(dotEl.getAttribute('data-value'), 10)});
@@ -87,11 +88,16 @@
     const value = generateDotScore(diameter);
     const leftPosition = randomIntInclusive(0, (viewportWidth - 100));
     const dotEl = document.createElement('span');
+    const randomIndex = randomIntInclusive(0, 3);
+    const color = dotColors[randomIndex];
+    const gradient = dotGradient[randomIndex];
 
     dotEl.setAttribute('class', 'dot');
     dotEl.setAttribute('data-value', value);
     dotEl.setAttribute('data-diameter', diameter);
     dotEl.style.width = diameter + 'px';
+    dotEl.style.border = '1px solid black';
+    dotEl.style.background = `linear-gradient(${gradient}, ${color})`;
     dotEl.style.height = diameter + 'px';
     dotEl.style.left = leftPosition + 'px';
     dotEl.style.top = 0 + 'px';
