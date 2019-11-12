@@ -104,22 +104,21 @@
     dotEl.addEventListener('click', handleDotClick);
 
     document.getElementById('viewport').appendChild(dotEl);
+    requestAnimationFrame(() => animateDot(dotEl));
   };
 
-  const moveDots = _ => {
-    const dots = document.querySelectorAll('span.dot');
-
-    dots.forEach((dotEl) => {
-      const top = parseInt(dotEl.style.top);
-      const viewportHeight = document.getElementById('viewport').offsetHeight;
-      const speed = speedStore.getState().speed;
-
-      if (top > viewportHeight) dotEl.parentNode.removeChild(dotEl);
-
-      const updatedSpeed = top + speed;
-
-      dotEl.style.top = updatedSpeed + 'px';
-    });
+  const animateDot = (el) => {
+    let top = parseInt(el.style.top);
+    const speed = speedStore.getState().speed;
+    const viewportHeight = document.getElementById('viewport').offsetHeight;
+    if (top > viewportHeight) {
+      el.parentNode.removeChild(el);
+      return;
+    }
+    setTimeout(() => {
+      el.style.top = (++top) + 'px';
+    }, 1000 / speed);
+    requestAnimationFrame(() => animateDot(el));
   };
 
   ////////////////////////////////
@@ -147,17 +146,11 @@
 
       gameScoreElement.innerHTML = state.score;
     });
-  }
-
-  const runGame = _ => {
-    addDot();
-    moveDots();
   };
   
   window.onload = () => {
     setupGame();
     addDot();
-    moveDots();
-    window.setInterval(() => runGame(), 1000);
+    window.setInterval(() => addDot(), 1000);
   };
 })(window);
