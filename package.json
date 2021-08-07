@@ -15,5 +15,8 @@
 		"express",
 		"sass"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"tar": "^6.1.6"
+	}
 }
