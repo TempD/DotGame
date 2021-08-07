@@ -1,22 +1,27 @@
 {
-	"name": "sass",
-	"version": "0.1.0",
-	"description": "Example project showing how to use Sass middleware",
-	"main": "server.js",
-	"scripts": {
-		"start": "node server.js"
-	},
-	"dependencies": {
-		"express": "^4.15.0",
-		"node-sass-middleware": "^0.11.0"
-	},
-	"keywords": [
-		"node",
-		"express",
-		"sass"
-	],
-	"license": "MIT",
-	"devDependencies": {
-		"tar": "^6.1.6"
-	}
+  "name": "sass",
+  "version": "0.1.0",
+  "description": "Example project showing how to use Sass middleware",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.0",
+    "node-sass-middleware": "^0.11.0"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "sass"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tar": "^6.1.6",
+    "trim-newlines": "^4.0.2"
+  },
+  "resolutions": {
+    "tar": "^6.1.6",
+    "trim-newlines": "^4.0.2"
+  }
 }
