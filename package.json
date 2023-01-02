@@ -17,7 +17,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "tar": "^6.1.6",
+    "tar": "^6.1.9",
     "trim-newlines": "^4.0.2"
   },
   "resolutions": {
